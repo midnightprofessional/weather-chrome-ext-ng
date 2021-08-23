@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --output-hashing none --extra-webpack-config ./projects/ng/webpack.partial.js --single-bundle",
     "build": "ng build --output-hashing none --extra-webpack-config ./projects/ng/webpack.partial.js --single-bundle",
-    "watch": "ng build --watch --configuration development --output-hashing none --extra-webpack-config ./projects/ng/webpack.partial.js --single-bundle"
+    "watch": "npm run clean && npm-run-all --parallel watch:*",
+    "watch:ng": "ng build --watch --configuration development --output-hashing none  --delete-output-path false --extra-webpack-config ./projects/ng/webpack.partial.js --single-bundle",
+    "watch:chrome": "webpack --watch --progress --config ./chrome/webpack.chrome.js",
+    "clean": "rimraf dist"
   },
   "private": true,
   "dependencies": {
@@ -32,9 +34,15 @@
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "autoprefixer": "^10.3.2",
+    "copy-webpack-plugin": "^9.0.1",
     "daisyui": "^1.13.2",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.3.6",
+    "rimraf": "^3.0.2",
     "tailwindcss": "^2.2.7",
-    "typescript": "~4.3.5"
+    "ts-loader": "^9.2.5",
+    "typescript": "~4.3.5",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.8.0"
   }
 }
