@@ -1,16 +1,21 @@
-import { NgModule } from '@angular/core';
+import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { createCustomElement } from '@angular/elements';
 
-import { AppComponent } from './app.component';
+import { PopupPageComponent } from './popup-page/popup-page.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule],
+  declarations: [PopupPageComponent],
+  exports: [PopupPageComponent],
 })
-export class AppModule { }
+export class AppModule implements DoBootstrap {
+  
+  constructor(private injector: Injector) { }
+
+  ngDoBootstrap(): void {
+    const customButton = createCustomElement(PopupPageComponent, { injector: this.injector });
+    customElements.define('popup-page', customButton);
+  }
+
+ }
