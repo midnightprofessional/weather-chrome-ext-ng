@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --output-hashing none",
-    "build": "ng build --output-hashing none",
-    "watch": "ng build --watch --configuration development --output-hashing none"
+    "start": "ng serve --output-hashing none --extra-webpack-config ./projects/ng/webpack.partial.js --single-bundle",
+    "build": "ng build --output-hashing none --extra-webpack-config ./projects/ng/webpack.partial.js --single-bundle",
+    "watch": "ng build --watch --configuration development --output-hashing none --extra-webpack-config ./projects/ng/webpack.partial.js --single-bundle"
   },
   "private": true,
   "dependencies": {
@@ -18,7 +18,9 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@webcomponents/webcomponentsjs": "^2.6.0",
     "document-register-element": "^1.7.2",
+    "ngx-build-plus": "^12.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
