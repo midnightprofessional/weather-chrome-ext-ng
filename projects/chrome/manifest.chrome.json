@@ -22,6 +22,10 @@
     "content_scripts": [
         {
             "js": [
+                "/ng/polyfills.js",
+                "/ng/polyfill-webcomp-es5.js",
+                "/ng/polyfill-webcomp.js",
+                "/ng/main.js",
                 "content.js"
             ],
             "matches": [
