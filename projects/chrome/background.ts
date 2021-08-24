@@ -1,9 +1,20 @@
+import weather from '../shared/open-weather.service';
+import storage from '../shared/local-storage.service';
+
 console.info('Hi from background');
 
-// console.log('b1...');
-// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-//     console.log('background recieving data...');
-//     console.info(message);
-//     return;
-// });
-// console.log('b2...');
+chrome.contextMenus.create({
+    contexts: ['selection'],
+    title: 'Add city to weather extension',
+    id: 'weatherExtension'
+});
+
+chrome.contextMenus.onClicked.addListener(async event => {
+    console.log(event);
+    const city = event.selectionText;
+    if (!city)
+        return;
+
+    await weather.fetchWeatherData(city);
+    await storage.addCity(city);
+});
