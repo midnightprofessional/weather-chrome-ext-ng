@@ -1,3 +1,29 @@
-<div class="options-container">
-    <p class="text-2xl text-primary">options-page works!</p>
+<div class="options-container" data-theme="cupcake">
+    <div class="card bordered shadow-lg">
+        <div class="card-body">
+
+            <h1 class="card-title mb-6">Weather Extension Options</h1>
+
+            <div class="form-control flex flex-row justify-between items-center gap-4">
+                <label class="label">
+                    <span class="label-text">Home city :</span>
+                </label>
+                <div class="flex space-x-2">
+                    <input type="text" placeholder="Enter a city name" class="w-full input input-primary input-bordered"
+                        [value]="home" [ngClass]="{'input-error' : errMsg}" [disabled]="loading" (keyup)="onKeyUp()"
+                        #inputCity>
+                    <button class="btn btn-primary" [ngClass]="{'loading':loading}" [disabled]="loading"
+                        (click)="onCitySave(inputCity)">
+                        <ng-container *ngIf="!loading">
+                            Save
+                        </ng-container>
+                    </button>
+                </div>
+            </div>
+
+            <label class="label" *ngIf="errMsg">
+                <span class="label-text-alt text-error">{{ errMsg }}</span>
+            </label>
+        </div>
+    </div>
 </div>
