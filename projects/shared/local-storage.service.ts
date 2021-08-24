@@ -32,7 +32,7 @@ export class LocalStorageService {
         });
     }
 
-    private async setCities(cities: string[]): Promise<void> {
+    async setCities(cities: string[]): Promise<void> {
 
         if (!cities)
             throw new Error('cities cannot be null');
