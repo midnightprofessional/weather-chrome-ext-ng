@@ -82,6 +82,10 @@ export class PopupPageComponent implements OnInit {
     }
   }
 
+  onOverlayToggle() {
+    throw Error('TODO');
+  }
+
   async onDelete(city: string) {
     try {
       this.loading = true;
