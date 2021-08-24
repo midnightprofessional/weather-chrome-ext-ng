@@ -77,7 +77,19 @@ export class PopupPageComponent implements OnInit {
     } finally {
       this.loading = false;
     }
+  }
 
+  async onDelete(city: string) {
+    try {
+      this.loading = true;
+
+      this.cities = await storage.removeCity(city);
+      this.weatherDatas = await this.getWeatherData(this.cities, this.scale);
+    } catch (err) {
+      this.errMsg = err.message;
+    } finally {
+      this.loading = false;
+    }
   }
 
   private async getWeatherData(cities: string[], scale: TempetureScale = 'metric'): Promise<OpenWeatherData[]> {
