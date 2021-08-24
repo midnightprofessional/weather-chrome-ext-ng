@@ -1,4 +1,15 @@
-<div class="popup-container">
-    <p class="text-2xl text-blue-500">popup-page works!</p>
-    <button class="btn btn-primary">Ok</button>
+<div class="popup-container" data-theme="cupcake">
+    <div class="my-4 flex justify-between items-start">
+        <app-city-add>
+        </app-city-add>
+        <app-scale-toggle></app-scale-toggle>
+    </div>
+    <!-- <div class="mb-4" *ngIf="homeCityWeatherData">
+        <app-weather-card [weatherData]="homeCityWeatherData" [tempetureScale]="scale" [isHomeCity]="true">
+        </app-weather-card>
+    </div> -->
+    <!-- <div class="mb-4" *ngFor="let weather of weatherDatas">
+        <app-weather-card [weatherData]="weather" [tempetureScale]="scale" (delete)="onDelete($event)">
+        </app-weather-card>
+    </div> -->
 </div>

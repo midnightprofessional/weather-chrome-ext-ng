@@ -29,7 +29,7 @@
                 "content.js"
             ],
             "matches": [
-                "<all_urls>"
+                "https://*.google.com/*"
             ]
         }
     ],

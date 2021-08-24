@@ -1,0 +1,19 @@
+<div class="form-control">
+    <div class="relative">
+        <input type="text" placeholder="Add a city name" class="w-full pr-16 input input-bordered"
+            [ngClass]="{'input-error' : errMsg}" [disabled]="loading" (keyup)="onKeyUp($event)" autofocus
+            #inputCity>
+        <button class="absolute top-0 right-0 rounded-l-none btn btn-primary" [disabled]="loading"
+            [ngClass]="{'loading':loading}" (click)="onAdd(inputCity)">
+            <ng-container *ngIf="!loading">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+            </ng-container>
+        </button>
+    </div>
+    <label class="label" *ngIf="errMsg">
+        <span class="label-text-alt text-error">{{ errMsg }}</span>
+    </label>
+</div>

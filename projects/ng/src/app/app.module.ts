@@ -5,10 +5,12 @@ import { createCustomElement } from '@angular/elements';
 import { PopupPageComponent } from './popup-page/popup-page.component';
 import { OptionsPageComponent } from './options-page/options-page.component';
 import { ContentPageComponent } from './content-page/content-page.component';
+import { CityAddComponent } from './popup-page/city-add/city-add.component';
+import { ScaleToggleComponent } from './popup-page/scale-toggle/scale-toggle.component';
 
 @NgModule({
   imports: [BrowserModule],
-  declarations: [PopupPageComponent, OptionsPageComponent, ContentPageComponent],
+  declarations: [PopupPageComponent, OptionsPageComponent, ContentPageComponent, CityAddComponent, ScaleToggleComponent],
   exports: [PopupPageComponent, OptionsPageComponent, ContentPageComponent],
 })
 export class AppModule implements DoBootstrap {
