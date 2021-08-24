@@ -9,10 +9,11 @@ import { CityAddComponent } from './popup-page/city-add/city-add.component';
 import { ScaleToggleComponent } from './popup-page/scale-toggle/scale-toggle.component';
 import { WeatherCardComponent } from './popup-page/weather-card/weather-card.component';
 import { OverlayToggleComponent } from './popup-page/overlay-toggle/overlay-toggle.component';
+import { BtnCloseComponent } from './content-page/btn-close/btn-close.component';
 
 @NgModule({
   imports: [BrowserModule],
-  declarations: [PopupPageComponent, OptionsPageComponent, ContentPageComponent, CityAddComponent, ScaleToggleComponent, WeatherCardComponent, OverlayToggleComponent],
+  declarations: [PopupPageComponent, OptionsPageComponent, ContentPageComponent, CityAddComponent, ScaleToggleComponent, WeatherCardComponent, OverlayToggleComponent, BtnCloseComponent],
   exports: [PopupPageComponent, OptionsPageComponent, ContentPageComponent],
 })
 export class AppModule implements DoBootstrap {
