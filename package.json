@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "build": "ng build --output-hashing none --extra-webpack-config ./projects/ng/webpack.partial.js --single-bundle",
     "watch": "npm run clean && npm-run-all --parallel watch:*",
     "watch:ng": "ng build --watch --configuration development --output-hashing none  --delete-output-path false --extra-webpack-config ./projects/ng/webpack.partial.js --single-bundle",
     "watch:chrome": "webpack --watch --progress --config ./projects/chrome/webpack.chrome.js",

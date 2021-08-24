@@ -24,6 +24,24 @@ module.exports = {
                 from: path.resolve(__dirname, 'manifest.chrome.json'),
                 to: path.resolve(__dirname, '../../dist/manifest.json')
             }]
+        }),
+        new CopyPlugin({
+            patterns: [{
+                from: path.resolve(__dirname, 'popup.html'),
+                to: path.resolve(__dirname, '../../dist')
+            }]
+        }),
+        new CopyPlugin({
+            patterns: [{
+                from: path.resolve(__dirname, 'options.html'),
+                to: path.resolve(__dirname, '../../dist')
+            }]
+        }),
+        new CopyPlugin({
+            patterns: [{
+                from: path.resolve(__dirname, './assets'),
+                to: path.resolve(__dirname, '../../dist/assets')
+            }]
         })
     ],
     resolve: {
