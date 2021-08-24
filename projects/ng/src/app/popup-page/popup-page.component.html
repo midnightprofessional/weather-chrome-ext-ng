@@ -1,8 +1,8 @@
 <div class="popup-container" data-theme="cupcake">
     <div class="my-4 flex justify-between items-start">
-        <app-city-add>
+        <app-city-add [errMsg]="errMsg" [loading]="loading" (keyupCity)="onKeyUp()" (addCity)="onAddCity($event)">
         </app-city-add>
-        <app-scale-toggle></app-scale-toggle>
+        <app-scale-toggle [scale]="scale" (scaleToggle)="onScaleToggle()"></app-scale-toggle>
     </div>
     <!-- <div class="mb-4" *ngIf="homeCityWeatherData">
         <app-weather-card [weatherData]="homeCityWeatherData" [tempetureScale]="scale" [isHomeCity]="true">
