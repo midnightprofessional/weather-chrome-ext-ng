@@ -1,4 +1,4 @@
-<div class="card shadow-lg" *ngIf="weatherData" [ngClass]="{'bg-primary text-primary-content' : isHomeCity}">
+<div class="card shadow-lg" *ngIf="weatherData" [ngClass]="{'bg-primary text-primary-content' : isHomeCity, 'bg-secondary text-secondary-content' : !isHomeCity}">
     <div class="card-body p-5">
         <h2 class="card-title mb-2">{{weatherData.name}}</h2>
         <p class="mb-2 text-sm">

@@ -17,6 +17,9 @@ export class PopupPageComponent implements OnInit {
 
   scale?: TempetureScale;
 
+  homeCity?: string;
+  homeCityWeatherData?: OpenWeatherData;
+
   cities: string[] = [];
   weatherDatas: OpenWeatherData[] = [];
 
@@ -27,9 +30,9 @@ export class PopupPageComponent implements OnInit {
     try {
       this.loading = true;
       this.scale = await storage.getTempetureScale();
-      // this.homeCity = await storage.getHomeCity();
-      // if (this.homeCity)
-      //   this.homeCityWeatherData = await weather.fetchWeatherData(this.homeCity, this.scale)
+      this.homeCity = await storage.getHomeCity();
+      if (this.homeCity)
+        this.homeCityWeatherData = await weather.fetchWeatherData(this.homeCity, this.scale)
       this.cities = await storage.getCities();
       this.weatherDatas = await this.getWeatherData(this.cities, this.scale);
     } finally {
@@ -71,8 +74,8 @@ export class PopupPageComponent implements OnInit {
 
       this.scale = this.scale === 'metric' ? 'imperial' : 'metric';
       await storage.setTempetureScale(this.scale);
-      // if (this.homeCity)
-      //   this.homeCityWeatherData = await weather.fetchWeatherData(this.homeCity, this.scale)
+      if (this.homeCity)
+        this.homeCityWeatherData = await weather.fetchWeatherData(this.homeCity, this.scale)
       this.weatherDatas = await this.getWeatherData(this.cities, this.scale);
     } finally {
       this.loading = false;

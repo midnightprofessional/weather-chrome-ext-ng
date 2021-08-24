@@ -4,10 +4,10 @@
         </app-city-add>
         <app-scale-toggle [scale]="scale" (scaleToggle)="onScaleToggle()"></app-scale-toggle>
     </div>
-    <!-- <div class="mb-4" *ngIf="homeCityWeatherData">
+    <div class="mb-4" *ngIf="homeCityWeatherData">
         <app-weather-card [weatherData]="homeCityWeatherData" [tempetureScale]="scale" [isHomeCity]="true">
         </app-weather-card>
-    </div> -->
+    </div>
     <div class="mb-4" *ngFor="let weather of weatherDatas">
         <app-weather-card [weatherData]="weather" [tempetureScale]="scale" (delete)="onDelete($event)">
         </app-weather-card>
