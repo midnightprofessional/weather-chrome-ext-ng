@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { OpenWeatherData, TempetureScale } from 'projects/shared/open-weather.data-model';
-import storage from 'projects/shared/local-storage.service';
 import { MessageType } from 'projects/shared/message.data-model';
-import { addCity, removeCity, getHomeCityWeather, getCityWeathers } from 'projects/shared/city-weather.service'
+import { addCity, removeCity, getHomeCityWeather, getCityWeathers, getTempetureScale, setTempetureScale } from 'projects/shared/city-weather.service'
 
 @Component({
   selector: 'app-popup-page',
@@ -31,12 +30,10 @@ export class PopupPageComponent implements OnInit {
     try {
       this.loading = true;
 
-      this.scale = await storage.getTempetureScale();
+      this.scale = await getTempetureScale();
 
       await this.loadHomeCityWeather();
       await this.loadCityWeathers();
-      // this.cities = await storage.getCities();
-      // this.weatherDatas = await this.getWeatherData(this.cities, this.scale);
     } finally {
       this.loading = false;
     }
@@ -80,7 +77,7 @@ export class PopupPageComponent implements OnInit {
       this.loading = true;
 
       this.scale = this.scale === 'metric' ? 'imperial' : 'metric';
-      await storage.setTempetureScale(this.scale);
+      await setTempetureScale(this.scale);
 
       await this.loadHomeCityWeather();
       await this.loadCityWeathers();

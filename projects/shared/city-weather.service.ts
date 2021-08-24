@@ -1,4 +1,4 @@
-import { OpenWeatherData } from "./open-weather.data-model";
+import { OpenWeatherData, TempetureScale } from "./open-weather.data-model";
 import storage from './local-storage.service';
 import weather from './open-weather.service';
 
@@ -44,11 +44,18 @@ export async function getCityWeathers(): Promise<CityWeather[]> {
     return cities.map((city, index) => [city, weathers[index]]);
 }
 
-
 export async function getHomeCityWeather(): Promise<CityWeather | undefined> {
     const [scale, home] = await Promise.all([storage.getTempetureScale(), storage.getHomeCity()]);
     if (!home)
         return undefined;
     const homeWeather = await weather.fetchWeatherData(home, scale);
     return [home, homeWeather];
+}
+
+export async function getTempetureScale(): Promise<TempetureScale> {
+    return storage.getTempetureScale();
+}
+
+export async function setTempetureScale(scale: TempetureScale): Promise<void> {
+    return storage.setTempetureScale(scale);
 }
