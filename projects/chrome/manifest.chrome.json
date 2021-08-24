@@ -12,7 +12,8 @@
     "permissions": [
         "alarms",
         "contextMenus",
-        "storage"
+        "storage",
+        "activeTab"
     ],
     "action": {
         "default_popup": "popup.html",
@@ -29,7 +30,7 @@
                 "content.js"
             ],
             "matches": [
-                "https://*.google.com/*"
+                "https://*.google.com.au/*"
             ]
         }
     ],

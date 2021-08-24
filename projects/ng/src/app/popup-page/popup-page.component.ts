@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { OpenWeatherData, TempetureScale } from 'projects/shared/open-weather.data-model';
 import weather from 'projects/shared/open-weather.service';
 import storage from 'projects/shared/local-storage.service';
+import { MessageType } from 'projects/shared/message.data-model';
 
 @Component({
   selector: 'app-popup-page',
@@ -82,8 +83,11 @@ export class PopupPageComponent implements OnInit {
     }
   }
 
-  onOverlayToggle() {
-    throw Error('TODO');
+  async onOverlayToggle() {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      const msg: MessageType = 'TOGGLE_OVERLAY';
+      chrome.tabs.sendMessage(tabs[0].id!, msg, function (response) { });
+    });
   }
 
   async onDelete(city: string) {
