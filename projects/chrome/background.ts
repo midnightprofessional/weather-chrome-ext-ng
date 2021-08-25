@@ -1,36 +1,46 @@
-import weather from '../shared/open-weather.service';
-import storage from '../shared/local-storage.service';
-import { TempetureScale } from 'projects/shared/open-weather.data-model';
+import { getTempetureScale, getHomeCityWeather, addCity } from '../shared/city-weather.service';
 
 console.info('Hi from background');
 
-chrome.contextMenus.create({
-    contexts: ['selection'],
-    title: 'Add city to weather extension',
-    id: 'weatherExtension'
+chrome.runtime.onInstalled.addListener(details => {
+    chrome.contextMenus.create({
+        contexts: ['selection'],
+        title: 'Add city to weather extension',
+        id: 'weatherExtension'
+    });
+
+    chrome.alarms.create({ periodInMinutes: 1 / 6 });
 });
+
 
 chrome.contextMenus.onClicked.addListener(async event => {
     console.log(event);
     const city = event.selectionText;
     if (!city)
-        return;
-
-    await weather.fetchWeatherData(city);
-    await storage.addCity(city);
+        await addCity(city!);
 });
 
-let symbol = '';
-Promise.all([storage.getTempetureScale(), storage.getHomeCity()])
-    .then(([scale, home]) => {
-        symbol = scale === 'metric' ? '\u2103' : '\u2109';
-        return home ? weather.fetchWeatherData(home, scale) : undefined;
-    })
-    .then(weather => {
-        if (weather)
-            chrome.action.setBadgeText({
-                text: Math.round(weather.main.temp).toString() + symbol
-            });
-    })
+chrome.alarms.onAlarm.addListener(() => {
+    refreshBadgeText();
+})
 
 
+async function refreshBadgeText() {
+    const badgeText = await getBadgeText();
+    chrome.action.setBadgeText({
+        text: badgeText ?? ''
+    });
+}
+
+async function getBadgeText() {
+    const [, weather] = await getHomeCityWeather() ?? [];
+    const temp = weather?.main.temp;
+
+    if (!temp)
+        return undefined;
+
+    const scale = await getTempetureScale();
+    const symbol = scale === 'metric' ? '\u2103' : '\u2109';
+
+    return Math.round(temp) + symbol;
+}

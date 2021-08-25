@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import weather from 'projects/shared/open-weather.service';
-import storage from 'projects/shared/local-storage.service';
+import { getHomeCity, addHomeCity } from 'projects/shared/city-weather.service'
 
 @Component({
   selector: 'app-options-page',
@@ -19,7 +18,7 @@ export class OptionsPageComponent implements OnInit {
   constructor() { }
 
   async ngOnInit() {
-    this.home = await storage.getHomeCity();
+    this.home = await getHomeCity();
   }
 
   async onCitySave(input: HTMLInputElement) {
@@ -27,9 +26,7 @@ export class OptionsPageComponent implements OnInit {
 
     try {
       this.loading = true;
-      if (city)
-        await weather.fetchWeatherData(city);
-      await storage.setHomeCity(city);
+      await addHomeCity(city);
     } catch (err) {
       this.errMsg = err.message;
     } finally {

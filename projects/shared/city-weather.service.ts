@@ -52,6 +52,16 @@ export async function getHomeCityWeather(): Promise<CityWeather | undefined> {
     return [home, homeWeather];
 }
 
+export async function getHomeCity(): Promise<string> {
+    return storage.getHomeCity();
+}
+
+export async function addHomeCity(city: string): Promise<void> {
+    if (city)
+        await weather.fetchWeatherData(city);
+    await storage.setHomeCity(city);
+}
+
 export async function getTempetureScale(): Promise<TempetureScale> {
     return storage.getTempetureScale();
 }
