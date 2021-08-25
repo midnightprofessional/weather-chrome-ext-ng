@@ -11,7 +11,7 @@ import weather from 'projects/shared/services/open-weather.service';
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class ContentPageComponent implements OnInit {
-  @Input() active = false;
+  @Input() active?= false;
 
   scale?: TempetureScale;
   homeCity?: string;
@@ -24,6 +24,10 @@ export class ContentPageComponent implements OnInit {
     this.homeCity = await storage.getHomeCity();
     if (this.homeCity)
       this.homeCityWeatherData = await weather.fetchWeatherData(this.homeCity, this.scale)
+  }
+
+  onClose() {
+    delete this.active;
   }
 
 }

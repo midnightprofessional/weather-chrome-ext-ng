@@ -1,7 +1,7 @@
 <div class="content-container" data-theme="cupcake" *ngIf="active">
     <div class="container-window">
         <div>
-            <app-btn-close></app-btn-close>
+            <app-btn-close (close)="onClose()"></app-btn-close>
         </div>
         <div class="my-4">
             <app-weather-card [weatherData]="homeCityWeatherData" [tempetureScale]="scale" [isHomeCity]="true">
