@@ -1,15 +1,14 @@
 import { OpenWeatherData, TempetureScale } from '../models/open-weather.data-model';
+import config from '../config';
 
-// api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-const API_KEY = 'd3afe7aded0e54d2cdafcdf0d55b6181';
-
+// https://openweathermap.org/current
 export class WeatherService {
 
     async fetchWeatherData(city: string, scale: TempetureScale = 'metric') {
         if (!city)
             throw new Error('City is null');
 
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=${scale}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${config.OPEN_WEATHER_MAP.API_KEY}&units=${scale}`;
         const res = await fetch(url);
         if (!res.ok)
             throw new Error('City not found');

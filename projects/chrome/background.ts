@@ -1,3 +1,4 @@
+import config from '../shared/config';
 import { getTempetureScale, getHomeCityWeather, addCity } from '../shared/services/city-weather.service';
 
 console.info('Hi from background');
@@ -9,7 +10,7 @@ chrome.runtime.onInstalled.addListener(details => {
         id: 'weatherExtension'
     });
 
-    chrome.alarms.create({ periodInMinutes: 1 / 6 });
+    chrome.alarms.create({ periodInMinutes: config.BADGE.REFRESH_PERIOD_IN_MINUTES });
 });
 
 
@@ -20,6 +21,7 @@ chrome.contextMenus.onClicked.addListener(async event => {
         await addCity(city!);
 });
 
+refreshBadgeText();
 chrome.alarms.onAlarm.addListener(() => {
     refreshBadgeText();
 })
@@ -27,6 +29,9 @@ chrome.alarms.onAlarm.addListener(() => {
 
 async function refreshBadgeText() {
     const badgeText = await getBadgeText();
+    chrome.action.setBadgeBackgroundColor({
+        color: config.BADGE.BACKGROUND_COLOR
+    })
     chrome.action.setBadgeText({
         text: badgeText ?? ''
     });
