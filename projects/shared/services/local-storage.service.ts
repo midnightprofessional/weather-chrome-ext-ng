@@ -11,7 +11,7 @@ export class LocalStorageService {
     async getHomeCity(): Promise<string> {
         return new Promise(resolve => {
             chrome.storage.local.get('home', result => {
-                resolve(result['home'] ?? '');
+                resolve(result['home'] ?? 'Sydney');
             });
         });
     }

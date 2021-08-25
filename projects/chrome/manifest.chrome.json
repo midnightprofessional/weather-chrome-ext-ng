@@ -30,7 +30,7 @@
                 "content.js"
             ],
             "matches": [
-                "https://*.google.com.au/*"
+                "<all_urls>"
             ]
         }
     ],
