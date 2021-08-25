@@ -1,5 +1,8 @@
 export interface OpenWeatherData {
     name: string;
+    sys: {
+        country: string;
+    };
     main: {
         feels_like: number;
         humidity: number;

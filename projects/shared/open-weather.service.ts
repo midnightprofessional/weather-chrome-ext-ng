@@ -13,8 +13,8 @@ export class WeatherService {
         const res = await fetch(url);
         if (!res.ok)
             throw new Error('City not found');
-
         const data: OpenWeatherData = await res.json();
+        console.log(data);
         return data;
     }
 }
