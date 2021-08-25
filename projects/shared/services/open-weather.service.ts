@@ -13,8 +13,17 @@ export class WeatherService {
         if (!res.ok)
             throw new Error('City not found');
         const data: OpenWeatherData = await res.json();
+        if (data.weather.length > 0)
+            data.weather_details = {
+                description: data.weather[0].description,
+                iconUrl: this.getWeatherIconUrl(data.weather[0].icon)
+            };
         console.log(data);
         return data;
+    }
+
+    private getWeatherIconUrl(code: string) {
+        return `http://openweathermap.org/img/wn/${code}@2x.png`;
     }
 }
 

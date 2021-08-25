@@ -1,21 +1,31 @@
 <div class="card shadow-lg" *ngIf="weatherData"
     [ngClass]="{'bg-primary text-primary-content' : isHomeCity, 'bg-secondary text-secondary-content' : !isHomeCity}">
-    <div class="card-body p-5">
-        <h2 class="card-title mb-2">{{weatherData.name}}, {{weatherData.sys.country}}</h2>
-        <p class="mb-2 text-sm">
-            {{ weatherData.main.temp | number :'1.0-0'}}
-            <sup>
-                {{ tempetureScale === 'metric' ? '&#8451;' : '&#8457;' }}
-            </sup>
-        </p>
-        <p class="text-sm">
-            Feels like:
-            {{ weatherData.main.feels_like | number :'1.0-0'}}
-            <sup>
-                {{ tempetureScale === 'metric' ? '&#8451;' : '&#8457;' }}
-            </sup>
-        </p>
-        <div class="text-right" *ngIf="!isHomeCity">
+    <div class="card-body px-6 pt-0" [ngClass]="isHomeCity?'pb-6':'pb-0'">
+        <div class="flex flex-row justify-between items-end">
+            <div class="text-center">
+                <h2 class="mb-2 text-2xl">{{weatherData.name}}, {{weatherData.sys.country}}</h2>
+                <p class="mb-2 text-2xl">
+                    {{ weatherData.main.temp | number :'1.0-0'}}
+                    <span>
+                        {{ tempetureScale === 'metric' ? '&#8451;' : '&#8457;' }}
+                    </span>
+                </p>
+                <p class="text-xs font-light">
+                    Feels like:
+                    {{ weatherData.main.feels_like | number :'1.0-0'}}
+                    <span>
+                        {{ tempetureScale === 'metric' ? '&#8451;' : '&#8457;' }}
+                    </span>
+                </p>
+            </div>
+            <div *ngIf="weatherData.weather_details" class="flex flex-col justify-center items-center">
+                <img class="weather-icon" [src]="weatherData.weather_details.iconUrl" [alt]="weatherData.weather_details.description">
+                <p class="text-xs font-light">
+                    {{ weatherData.weather_details.description }}
+                </p>
+            </div>
+        </div>
+        <div class="text-right mt-2" *ngIf="!isHomeCity">
             <button class="btn btn-ghost" (click)="onDelete(weatherData.name)">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-base-300" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">

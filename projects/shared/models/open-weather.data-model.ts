@@ -13,10 +13,14 @@ export interface OpenWeatherData {
     };
     weather: {
         description: string;
-        icon: number;
+        icon: string;
         id: string;
         main: string;
     }[];
+    weather_details?: {
+        iconUrl: string;
+        description: string;
+    };
     wind: {
         deg: number;
         speed: number;
