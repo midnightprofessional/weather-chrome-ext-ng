@@ -1,4 +1,4 @@
-# Mobile302
+# Weather Widget
 
 A simple Weather Widget Chrome Extension. It's built with Angular 12 + TailwindCSS, Tyepscript and theming with [DaisyUI](https://daisyui.com/)
 
