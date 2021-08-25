@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { OpenWeatherData, TempetureScale } from 'projects/shared/open-weather.data-model';
-import weather from 'projects/shared/open-weather.service';
-import storage from 'projects/shared/local-storage.service';
+import { OpenWeatherData, TempetureScale } from 'projects/shared/models/open-weather.data-model';
+import storage from 'projects/shared/services/local-storage.service';
+import weather from 'projects/shared/services/open-weather.service';
 
 @Component({
   selector: 'app-content-page',

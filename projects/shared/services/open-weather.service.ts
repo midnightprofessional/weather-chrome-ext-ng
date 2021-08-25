@@ -1,4 +1,4 @@
-import { OpenWeatherData, TempetureScale } from './open-weather.data-model';
+import { OpenWeatherData, TempetureScale } from '../models/open-weather.data-model';
 
 // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 const API_KEY = 'd3afe7aded0e54d2cdafcdf0d55b6181';

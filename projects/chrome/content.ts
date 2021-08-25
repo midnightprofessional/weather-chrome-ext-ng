@@ -1,4 +1,4 @@
-import { MessageType } from "../shared/message.data-model";
+import { MessageType } from "../shared/models/message.data-model";
 
 console.log('Hello from content');
 

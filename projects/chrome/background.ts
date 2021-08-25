@@ -1,4 +1,4 @@
-import { getTempetureScale, getHomeCityWeather, addCity } from '../shared/city-weather.service';
+import { getTempetureScale, getHomeCityWeather, addCity } from '../shared/services/city-weather.service';
 
 console.info('Hi from background');
 

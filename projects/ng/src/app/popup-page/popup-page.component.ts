@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { OpenWeatherData, TempetureScale } from 'projects/shared/open-weather.data-model';
-import { MessageType } from 'projects/shared/message.data-model';
-import { addCity, removeCity, getHomeCityWeather, getCityWeathers, getTempetureScale, setTempetureScale } from 'projects/shared/city-weather.service'
+import { OpenWeatherData, TempetureScale } from 'projects/shared/models/open-weather.data-model';
+import { MessageType } from 'projects/shared/models/message.data-model';
+import { addCity, removeCity, getHomeCityWeather, getCityWeathers, getTempetureScale, setTempetureScale } from 'projects/shared/services/city-weather.service'
 
 @Component({
   selector: 'app-popup-page',

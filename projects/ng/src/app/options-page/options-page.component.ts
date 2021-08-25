@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { getHomeCity, addHomeCity } from 'projects/shared/city-weather.service'
+import { getHomeCity, addHomeCity } from 'projects/shared/services/city-weather.service'
 
 @Component({
   selector: 'app-options-page',

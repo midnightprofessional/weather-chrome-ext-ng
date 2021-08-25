@@ -1,4 +1,4 @@
-import { TempetureScale } from "./open-weather.data-model";
+import { TempetureScale } from "../models/open-weather.data-model";
 
 export class LocalStorageService {
 

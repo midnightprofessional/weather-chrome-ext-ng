@@ -1,4 +1,4 @@
-import { OpenWeatherData, TempetureScale } from "./open-weather.data-model";
+import { OpenWeatherData, TempetureScale } from "../models/open-weather.data-model";
 import storage from './local-storage.service';
 import weather from './open-weather.service';
 

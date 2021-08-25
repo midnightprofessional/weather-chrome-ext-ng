@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TempetureScale } from 'projects/shared/open-weather.data-model';
+import { TempetureScale } from 'projects/shared/models/open-weather.data-model';
 
 @Component({
   selector: 'app-scale-toggle',
